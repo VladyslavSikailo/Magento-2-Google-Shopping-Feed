@@ -119,7 +119,7 @@ This setting is configurable per store view to allow different export strategies
 2. Add configuration for new attribute in `\RunAsRoot\GoogleShoppingFeed\Enum\AttributesToImportEnumInterface::ATTRIBUTES`.
 
 ### Use a custom shipping data source
-The `shipping` attribute only reads the `shipping_tablerate` table. To feed shipping costs from another source (Colissimo, GLS, ...), replace `ShippingProvider` via a DI preference. See [Custom shipping and attributes](docs/custom-shipping-and-attributes.md).
+The `shipping` attribute only reads the `shipping_tablerate` table. To feed shipping costs from another source (Colissimo, GLS, ...), add a DI `<preference>` for `\RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\ShippingProvider` pointing to your own class implementing `AttributeHandlerInterface`. Its `get(Product $product)` must return a list of `['country' => 'DE', 'price' => '12.00 EUR']` entries.
 
 ## Google Shopping Feeds Grid
 Generated feeds could be reviewed inside Admin Backoffice
